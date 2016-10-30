@@ -1,0 +1,14 @@
+extends layout
+
+block content
+	h4 liste des membres
+		if members
+			ul 
+				each member in members
+					li=member.name
+						form(method='post', action='/users/membersList')
+							input(name='membre', value=member.name,type='hidden')
+							button.btn.btn-default.btn-sm(type='submit')
+								span.glyphicon.glyphicon-trash(aria-hidden='true')
+								|  supprimer
+				

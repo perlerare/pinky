@@ -1,0 +1,25 @@
+doctype html
+html
+	head
+		title= title
+		script(type='text/javascript', src="https://code.jquery.com/jquery-3.1.0.min.js",  integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" , crossorigin="anonymous")
+		link(rel='stylesheet', href='/stylesheets/style.css')
+		link(rel='stylesheet', href='/stylesheets/bootstrap.css')
+		script(src="/socket.io/socket.io.js")
+		script(type='text/javascript', src='/javascripts/main.js')
+	body
+		.container-fluid
+			.header.clearfix
+					include menu
+			.container
+				.row
+					.col-lg-6
+						if success_msg != ''
+							.alert.alert-success=success_msg
+						if error_msg != ''
+							.alert.alert-danger=error_msg
+						if error != ''
+							.alert.alert-danger=error
+				block content
+			footer.footer
+				p © 2016 Social network, Inc.

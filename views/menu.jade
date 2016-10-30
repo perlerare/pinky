@@ -1,0 +1,30 @@
+mixin navLink(Link, name)
+	li
+		a(
+			href=Link
+			) #{name}
+
+nav.navbar.navbar-default
+	.container
+		a.navbar-brand MonSite
+		button.navbar-toggle(data-toggle="collapse",  data-target=".navbar-collapse-1")
+			// Hides information from screen readers
+			span.sr-only
+			// Draws 3 bars in navbar button when in small mode
+			span.icon-bar
+			span.icon-bar
+			span.icon-bar
+		// Collect the nav links, forms, and other content for toggling
+		.navbar-collapse-1.collapse.navbar-collapse
+			ul.nav.navbar-nav.navbar-right
+				+navLink('/','Acceuil')
+				if user
+					+navLink('/users/updateProfile',user.username)
+					+navLink('/','Amis')
+					+navLink('/','Messages')
+					+navLink('/users/logout','deconnecter')
+				else
+					+navLink('/users/login','connexion')
+					+navLink('/users/register','inscription')
+				+navLink('#','Apropos')
+				

@@ -1,0 +1,15 @@
+mixin navLink(Link, name)
+	li
+		a(
+			href=Link
+			) #{name}
+
+ul.nav.nav-pills.nav-stacked
+	if user
+		if user.role == 0
+			+navLink('/users/membersList','liste des membres')
+		if user.role == 1	
+			+navLink('/users/updateProfile','modifier profile')
+			+navLink('#','envoyer un message')
+			+navLink('#','chercher des amis')
+		
